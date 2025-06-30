@@ -1,0 +1,11 @@
+"filename", "language", "HTML", "PostCSS", "JavaScript", "JSON", "XML", "comment", "blank", "total"
+"c:\Users\starl\Desktop\School\STEM\index.html", "HTML", 93, 0, 0, 0, 0, 2, 4, 99
+"c:\Users\starl\Desktop\School\STEM\package-lock.json", "JSON", 0, 0, 0, 1017, 0, 0, 1, 1018
+"c:\Users\starl\Desktop\School\STEM\package.json", "JSON", 0, 0, 0, 17, 0, 0, 1, 18
+"c:\Users\starl\Desktop\School\STEM\public\vite.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 1
+"c:\Users\starl\Desktop\School\STEM\src\css\header.css", "PostCSS", 0, 313, 0, 0, 0, 11, 49, 373
+"c:\Users\starl\Desktop\School\STEM\src\css\hero.css", "PostCSS", 0, 116, 0, 0, 0, 0, 18, 134
+"c:\Users\starl\Desktop\School\STEM\src\css\style.css", "PostCSS", 0, 451, 0, 0, 0, 49, 86, 586
+"c:\Users\starl\Desktop\School\STEM\src\js\header.js", "JavaScript", 0, 0, 226, 0, 0, 44, 36, 306
+"c:\Users\starl\Desktop\School\STEM\src\js\hero.js", "JavaScript", 0, 0, 58, 0, 0, 5, 5, 68
+"Total", "-", 93, 880, 284, 1034, 1, 111, 200, 2603

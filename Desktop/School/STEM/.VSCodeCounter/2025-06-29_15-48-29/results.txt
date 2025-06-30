@@ -1,0 +1,42 @@
+Date : 2025-06-29 15:48:29
+Directory : c:\Users\starl\Desktop\School\STEM
+Total : 9 files,  2292 codes, 111 comments, 200 blanks, all 2603 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          2 |      1,034 |          0 |          2 |      1,036 |
+| PostCSS    |          3 |        880 |         60 |        153 |      1,093 |
+| JavaScript |          2 |        284 |         49 |         41 |        374 |
+| HTML       |          1 |         93 |          2 |          4 |         99 |
+| XML        |          1 |          1 |          0 |          0 |          1 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                  | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                     |          9 |      2,292 |        111 |        200 |      2,603 |
+| . (Files)                                             |          3 |      1,127 |          2 |          6 |      1,135 |
+| public                                                |          1 |          1 |          0 |          0 |          1 |
+| src                                                   |          5 |      1,164 |        109 |        194 |      1,467 |
+| src\css                                               |          3 |        880 |         60 |        153 |      1,093 |
+| src\js                                                |          2 |        284 |         49 |         41 |        374 |
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                              | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\starl\Desktop\School\STEM\index.html         | HTML       |         93 |          2 |          4 |         99 |
+| c:\Users\starl\Desktop\School\STEM\package-lock.json  | JSON       |      1,017 |          0 |          1 |      1,018 |
+| c:\Users\starl\Desktop\School\STEM\package.json       | JSON       |         17 |          0 |          1 |         18 |
+| c:\Users\starl\Desktop\School\STEM\public\vite.svg    | XML        |          1 |          0 |          0 |          1 |
+| c:\Users\starl\Desktop\School\STEM\src\css\header.css | PostCSS    |        313 |         11 |         49 |        373 |
+| c:\Users\starl\Desktop\School\STEM\src\css\hero.css   | PostCSS    |        116 |          0 |         18 |        134 |
+| c:\Users\starl\Desktop\School\STEM\src\css\style.css  | PostCSS    |        451 |         49 |         86 |        586 |
+| c:\Users\starl\Desktop\School\STEM\src\js\header.js   | JavaScript |        226 |         44 |         36 |        306 |
+| c:\Users\starl\Desktop\School\STEM\src\js\hero.js     | JavaScript |         58 |          5 |          5 |         68 |
+| Total                                                 |            |      2,292 |        111 |        200 |      2,603 |
++-------------------------------------------------------+------------+------------+------------+------------+------------+
