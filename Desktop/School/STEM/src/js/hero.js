@@ -20,7 +20,9 @@ function initHeroAnimations() {
   gsap.set(".hero-description", { y: 30, opacity: 0 });
   gsap.set(".hero-btn", { x: 40, opacity: 0 });
   gsap.set(".hero-bg-circle", { scale: 0, opacity: 0 });
-  gsap.set(".hero-bg-gradient", { x: 100, opacity: 0 });
+
+  
+
 
   // Create master timeline
   const tl = gsap.timeline({
@@ -43,6 +45,8 @@ function initHeroAnimations() {
       });
     },
   })
+
+
 
     // Animate description
     .to(
@@ -82,16 +86,7 @@ function initHeroAnimations() {
       "-=1.2"
     )
 
-    .to(
-      ".hero-bg-gradient",
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.5,
-        ease: "power2.out",
-      },
-      "-=1.5"
-    );
+    
 
   // Scroll-triggered animations for re-entry
   ScrollTrigger.create({
