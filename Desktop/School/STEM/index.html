@@ -9,12 +9,15 @@
     <link rel="stylesheet" href="src/css/hero.css" />
     <link rel="stylesheet" href="src/css/about-us.css" />
     <link rel="stylesheet" href="src/css/events.css" />
+    <link rel="stylesheet" href="src/css/footer.css" />
 
     <!-- Fonts -->
     <link
       href="https://api.fontshare.com/v2/css?f[]=bespoke-serif@400&f[]=tanker@400&f[]=supreme@400&f[]=chubbo@700&display=swap"
       rel="stylesheet"
     />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" media="print"
+    onload="this.media='all'">
   </head>
   <body>
     <header class="header">
@@ -544,7 +547,6 @@
 
         <!-- Background Elements -->
         <div class="events-bg">
-        
           <!-- Particle system like hero -->
           <div class="events-particles">
             <div class="particle particle-1"></div>
@@ -564,6 +566,82 @@
       </div>
     </section>
 
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-logo">
+              <h2>Earl STEM Council</h2>
+              <p class="tagline">Join the community, build the future of Earl STEM.</p>
+            </div>
+
+            <div class="footer-links">
+              <div class="footer-links-column">
+                <h3>Navigation</h3>
+                <ul>
+                  <li><a href="#home">Home</a></li>
+                  <li><a href="#about">About Us</a></li>
+                  <li><a href="#clubs">Clubs</a></li>
+                  <li><a href="#events">Events</a></li>
+                  <li><a href="#resources">Resources</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-links-column">
+                <h3>Connect</h3>
+                <div class="social-links">
+                  <a
+                    href="https://instagram.com/..."
+                    class="social-link"
+                  >
+                    <i class="ri-instagram-line"></i>
+                  </a>
+                  <a href="https://discord.com/invite/..." class="social-link">
+                    <i class="ri-discord-line"></i>
+                  </a>
+                  <a href="mailto:earlstem@gmail.com" class="social-link">
+                    <i class="ri-mail-line"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="footer-divider">
+        <div class="hexagon-container">
+          <div class="hexagon"></div>
+          <div class="hexagon"></div>
+          <div class="hexagon"></div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; 2025-2026 Earl of March STEM Council. All rights reserved.</p>
+          <p>
+            Made with <span class="heart">❤</span> by the STEM Council Team
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="custom-cursor" id="customCursor">
+        <div class="cursor-ring"></div>
+        <div class="cursor-core"></div>
+        <div class="cursor-dot"></div>
+        <div class="cursor-particle" style="--random-x: 15px; --random-y: -10px;"></div>
+        <div class="cursor-particle" style="--random-x: -12px; --random-y: 8px;"></div>
+        <div class="cursor-particle" style="--random-x: 8px; --random-y: 12px;"></div>
+        <div class="cursor-particle" style="--random-x: -15px; --random-y: -8px;"></div>
+    </div>
+
+    <!-- Trail elements -->
+    <div class="cursor-trail" id="trail1"></div>
+    <div class="cursor-trail" id="trail2"></div>
+    <div class="cursor-trail" id="trail3"></div>
+
     <!-- GSAP CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -574,5 +652,7 @@
     <script src="src/js/about-us.js"></script>
     <script src="src/js/scrolling.js"></script>
     <script src="src/js/events.js"></script>
+    <script src="src/js/footer.js"></script>
+    <script src="src/js/cursor.js"></script>
   </body>
 </html>

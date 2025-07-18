@@ -4,7 +4,7 @@
   --secondary-yellow: #cdb82d;
   --accent-light-green: #d3e585;
   --accent-dark-green: #389342;
-  
+
   /* Extended Color Palette */
   --primary-green-dark: #1a5c09;
   --primary-green-light: #2d9610;
@@ -14,7 +14,7 @@
   --accent-light-green-light: #e8f299;
   --accent-dark-green-dark: #2e7a38;
   --accent-dark-green-light: #42a64c;
-  
+
   /* Neutral Colors */
   --white: #ffffff;
   --black: #000000;
@@ -27,97 +27,119 @@
   --gray-700: #495057;
   --gray-800: #343a40;
   --gray-900: #212529;
-  
+
   /* Background Colors */
   --bg-primary: var(--white);
   --bg-secondary: var(--gray-100);
   --bg-dark: var(--gray-900);
   --bg-overlay: rgba(0, 0, 0, 0.5);
   --bg-glass: rgba(255, 255, 255, 0.1);
-  
+
   /* Text Colors */
   --text-primary: var(--gray-900);
   --text-secondary: var(--gray-600);
   --text-light: var(--white);
   --text-muted: var(--gray-500);
-  
+
   /* Typography */
-  --font-primary: 'Bespoke Serif', serif;
-  --font-secondary: 'Tanker', sans-serif;
-  --font-accent: 'Supreme', sans-serif;
-  --font-bold: 'Chubbo', sans-serif;
-  
+  --font-primary: "Bespoke Serif", serif;
+  --font-secondary: "Tanker", sans-serif;
+  --font-accent: "Supreme", sans-serif;
+  --font-bold: "Chubbo", sans-serif;
+
   /* Font Sizes */
-  --font-size-xs: 0.75rem;      /* 12px */
-  --font-size-sm: 0.875rem;     /* 14px */
-  --font-size-base: 1rem;       /* 16px */
-  --font-size-lg: 1.125rem;     /* 18px */
-  --font-size-xl: 1.25rem;      /* 20px */
-  --font-size-2xl: 1.5rem;      /* 24px */
-  --font-size-3xl: 1.875rem;    /* 30px */
-  --font-size-4xl: 2.25rem;     /* 36px */
-  --font-size-5xl: 3rem;        /* 48px */
-  --font-size-6xl: 3.75rem;     /* 60px */
-  --font-size-7xl: 4.5rem;      /* 72px */
-  --font-size-8xl: 6rem;        /* 96px */
-  --font-size-9xl: 8rem;        /* 128px */
-  
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+  --font-size-5xl: 3rem; /* 48px */
+  --font-size-6xl: 3.75rem; /* 60px */
+  --font-size-7xl: 4.5rem; /* 72px */
+  --font-size-8xl: 6rem; /* 96px */
+  --font-size-9xl: 8rem; /* 128px */
+
   /* Line Heights */
   --line-height-tight: 1.25;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
-  
+
   /* Spacing */
-  --spacing-xs: 0.25rem;         /* 4px */
-  --spacing-sm: 0.5rem;          /* 8px */
-  --spacing-base: 1rem;          /* 16px */
-  --spacing-lg: 1.5rem;          /* 24px */
-  --spacing-xl: 2rem;            /* 32px */
-  --spacing-2xl: 2.5rem;         /* 40px */
-  --spacing-3xl: 3rem;           /* 48px */
-  --spacing-4xl: 4rem;           /* 64px */
-  --spacing-5xl: 5rem;           /* 80px */
-  --spacing-6xl: 6rem;           /* 96px */
-  --spacing-8xl: 8rem;           /* 128px */
-  --spacing-12xl: 12rem;         /* 192px */
-  
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-base: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-2xl: 2.5rem; /* 40px */
+  --spacing-3xl: 3rem; /* 48px */
+  --spacing-4xl: 4rem; /* 64px */
+  --spacing-5xl: 5rem; /* 80px */
+  --spacing-6xl: 6rem; /* 96px */
+  --spacing-8xl: 8rem; /* 128px */
+  --spacing-12xl: 12rem; /* 192px */
+
   /* Borders */
   --border-width: 1px;
   --border-width-thick: 2px;
   --border-color: var(--gray-300);
   --border-color-dark: var(--gray-600);
-  
+
   /* Border Radius */
-  --radius-sm: 0.25rem;          /* 4px */
-  --radius-base: 0.5rem;         /* 8px */
-  --radius-lg: 0.75rem;          /* 12px */
-  --radius-xl: 1rem;             /* 16px */
-  --radius-2xl: 1.5rem;          /* 24px */
-  --radius-3xl: 2rem;            /* 32px */
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-base: 0.5rem; /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem; /* 16px */
+  --radius-2xl: 1.5rem; /* 24px */
+  --radius-3xl: 2rem; /* 32px */
   --radius-full: 9999px;
-  
+
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-  
+
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--primary-green), var(--accent-dark-green));
-  --gradient-secondary: linear-gradient(135deg, var(--secondary-yellow), var(--accent-light-green));
-  --gradient-accent: linear-gradient(135deg, var(--accent-light-green), var(--primary-green));
-  --gradient-rainbow: linear-gradient(135deg, var(--primary-green), var(--secondary-yellow), var(--accent-light-green), var(--accent-dark-green));
-  
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--primary-green),
+    var(--accent-dark-green)
+  );
+  --gradient-secondary: linear-gradient(
+    135deg,
+    var(--secondary-yellow),
+    var(--accent-light-green)
+  );
+  --gradient-accent: linear-gradient(
+    135deg,
+    var(--accent-light-green),
+    var(--primary-green)
+  );
+  --gradient-rainbow: linear-gradient(
+    135deg,
+    var(--primary-green),
+    var(--secondary-yellow),
+    var(--accent-light-green),
+    var(--accent-dark-green)
+  );
+
   /* Transitions */
   --transition-fast: 0.15s ease;
   --transition-base: 0.25s ease;
   --transition-slow: 0.5s ease;
   --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
+  --ease-out-quad: cubic-bezier(0.25, 1, 0.5, 1);
+
   /* Z-Index */
   --z-dropdown: 1000;
   --z-sticky: 1020;
@@ -127,7 +149,7 @@
   --z-popover: 1060;
   --z-tooltip: 1070;
   --z-toast: 1080;
-  
+
   /* Breakpoints */
   --breakpoint-xs: 375px;
   --breakpoint-sm: 576px;
@@ -135,7 +157,7 @@
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
   --breakpoint-2xl: 1400px;
-  
+
   /* Layout */
   --container-max-width: 1200px;
   --header-height: 80px;
@@ -150,6 +172,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: none !important;
 }
 
 *::before,
@@ -183,7 +206,12 @@ body {
    Typography Base
    ========================================== */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-secondary);
   font-weight: 400;
   line-height: var(--line-height-tight);
@@ -305,50 +333,264 @@ a:focus {
 /* ==========================================
    Custom Cursor
    ========================================== */
-
 .custom-cursor {
   position: fixed;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   pointer-events: none;
-  z-index: var(--z-tooltip);
-  mix-blend-mode: difference;
+  z-index: 9999;
+  transition: none;
 }
 
-.cursor-dot {
+.cursor-core {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 4px;
-  height: 4px;
-  background-color: var(--white);
-  border-radius: var(--radius-full);
   transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: var(--primary-green);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   transition: var(--transition-fast);
+  box-shadow: 0 0 20px var(--primary-green);
 }
 
 .cursor-ring {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--accent-light-green);
+  border-radius: 50%;
+  opacity: 0.6;
+  transition: var(--transition-smooth);
+}
+
+.cursor-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  background: var(--secondary-yellow);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--secondary-yellow);
+}
+
+.cursor-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--accent-light-green);
+  border-radius: 50%;
+  opacity: 0;
+  transition: var(--transition-fast);
+}
+
+.cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--primary-green);
+  border-radius: 50%;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+/* Color adaptations for different backgrounds */
+.custom-cursor.on-green .cursor-core {
+  background: var(--secondary-yellow);
+  box-shadow: 0 0 20px var(--secondary-yellow);
+}
+
+.custom-cursor.on-green .cursor-ring {
+  border-color: var(--secondary-yellow-light);
+}
+
+.custom-cursor.on-green .cursor-dot {
+  background: var(--secondary-yellow-dark);
+  box-shadow: 0 0 10px var(--secondary-yellow-dark);
+}
+
+.custom-cursor.on-green .cursor-trail {
+  background: var(--secondary-yellow);
+  box-shadow: 0 0 8px var(--secondary-yellow);
+}
+
+.custom-cursor.on-yellow .cursor-core {
+  background: var(--accent-dark-green);
+  box-shadow: 0 0 20px var(--accent-dark-green);
+}
+
+.custom-cursor.on-yellow .cursor-ring {
+  border-color: var(--accent-dark-green-light);
+}
+
+.custom-cursor.on-yellow .cursor-dot {
+  background: var(--primary-green);
+  box-shadow: 0 0 10px var(--primary-green);
+}
+
+.custom-cursor.on-yellow .cursor-trail {
+  background: var(--accent-dark-green);
+  box-shadow: 0 0 8px var(--accent-dark-green);
+}
+
+.custom-cursor.on-light .cursor-core {
+  background: var(--primary-green);
+  box-shadow: 0 0 20px var(--primary-green);
+}
+
+.custom-cursor.on-light .cursor-ring {
+  border-color: var(--accent-light-green);
+}
+
+.custom-cursor.on-light .cursor-dot {
+  background: var(--secondary-yellow);
+  box-shadow: 0 0 10px var(--secondary-yellow);
+}
+
+.custom-cursor.on-light .cursor-trail {
+  background: var(--primary-green);
+}
+
+/* Hover States with color adaptations */
+.custom-cursor.hover.on-green .cursor-core {
+  background: var(--secondary-yellow-light);
+  box-shadow: 0 0 30px var(--secondary-yellow-light);
+}
+
+.custom-cursor.hover.on-green .cursor-ring {
+  border-color: var(--secondary-yellow-light);
+}
+
+.custom-cursor.hover.on-green .cursor-dot {
+  background: var(--secondary-yellow-dark);
+  box-shadow: 0 0 15px var(--secondary-yellow-dark);
+}
+
+.custom-cursor.hover.on-yellow .cursor-core {
+  background: var(--accent-dark-green-light);
+  box-shadow: 0 0 30px var(--accent-dark-green-light);
+}
+
+.custom-cursor.hover.on-yellow .cursor-ring {
+  border-color: var(--accent-dark-green-light);
+}
+
+.custom-cursor.hover.on-yellow .cursor-dot {
+  background: var(--primary-green-light);
+  box-shadow: 0 0 15px var(--primary-green-light);
+}
+
+/* Click States with color adaptations */
+.custom-cursor.click.on-green .cursor-core {
+  background: var(--secondary-yellow-dark);
+}
+
+.custom-cursor.click.on-green .cursor-ring {
+  border-color: var(--secondary-yellow-dark);
+}
+
+.custom-cursor.click.on-yellow .cursor-core {
+  background: var(--primary-green-dark);
+}
+
+.custom-cursor.click.on-yellow .cursor-ring {
+  border-color: var(--primary-green-dark);
+}
+
+/* Text selection cursor with color adaptations */
+.custom-cursor.text.on-green .cursor-core {
+  background: var(--secondary-yellow);
+}
+
+.custom-cursor.text.on-yellow .cursor-core {
+  background: var(--accent-dark-green);
+}
+
+/* Hover States */
+.custom-cursor.hover .cursor-core {
   width: 20px;
   height: 20px;
-  border: 1px solid var(--white);
-  border-radius: var(--radius-full);
-  transform: translate(-50%, -50%);
-  transition: var(--transition-base);
-  opacity: 0.5;
+  background: var(--secondary-yellow);
+  box-shadow: 0 0 30px var(--secondary-yellow);
+  transform: translate(-50%, -50%) rotate(30deg);
 }
 
-.cursor-hover .cursor-ring {
-  transform: translate(-50%, -50%) scale(1.5);
-  opacity: 1;
+.custom-cursor.hover .cursor-ring {
+  width: 45px;
+  height: 45px;
+  border-color: var(--secondary-yellow);
+  opacity: 0.8;
+  animation: pulse 1s infinite;
 }
 
-.cursor-hover .cursor-dot {
-  transform: translate(-50%, -50%) scale(1.5);
+.custom-cursor.hover .cursor-dot {
+  background: var(--primary-green);
+  box-shadow: 0 0 15px var(--primary-green);
+}
+
+.custom-cursor.click .cursor-core {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-dark-green);
+  transform: translate(-50%, -50%) rotate(60deg) scale(0.8);
+}
+
+.custom-cursor.click .cursor-ring {
+  width: 25px;
+  height: 25px;
+  border-color: var(--accent-dark-green);
+  border-width: 3px;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--random-x), var(--random-y)) scale(1);
+    opacity: 0;
+  }
+}
+
+.cursor-particle.active {
+  animation: particleFloat 0.8s ease-out forwards;
+}
+
+/* Text selection cursor */
+.custom-cursor.text .cursor-core {
+  clip-path: none;
+  width: 2px;
+  height: 20px;
+  background: var(--primary-green);
+  border-radius: 1px;
+}
+
+.custom-cursor.text .cursor-ring {
+  opacity: 0;
 }
 
 /* ==========================================
@@ -399,7 +641,7 @@ a:focus {
     --spacing-5xl: 4rem;
     --spacing-6xl: 5rem;
   }
-  
+
   .container {
     padding: 0 var(--spacing-base);
   }
@@ -414,7 +656,7 @@ a:focus {
     --spacing-5xl: 3rem;
     --spacing-6xl: 4rem;
   }
-  
+
   .container {
     padding: 0 var(--spacing-sm);
   }
@@ -509,10 +751,15 @@ a:focus {
 }
 
 @keyframes bounce {
-  0%, 20%, 53%, 80%, 100% {
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
     transform: translateY(0);
   }
-  40%, 43% {
+  40%,
+  43% {
     transform: translateY(-15px);
   }
   70% {
@@ -524,7 +771,8 @@ a:focus {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {

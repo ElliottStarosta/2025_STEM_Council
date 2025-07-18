@@ -1,0 +1,220 @@
+.site-footer {
+  background-color: var(--accent-dark-green-light);
+  color: var(--white);
+  font-family: var(--font-accent);
+  padding-top: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.footer-logo h2 {
+  font-family: var(--font-secondary);
+  font-size: 2.5rem;
+  color: var(--secondary-yellow-light);
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.footer-logo .tagline {
+  color: var(--gray-100);
+  font-size: 1rem;
+  max-width: 300px;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.footer-links-column {
+  min-width: 160px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.footer-links-column h3 {
+  font-family: var(--font-bold);
+  color: var(--accent-light-green-light);
+  margin-bottom: 1.2rem;
+  font-size: 1.3rem;
+  position: relative;
+}
+
+.footer-links-column h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 40px;
+  height: 3px;
+  background: var(--gradient-secondary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-out-quad);
+}
+
+.footer-links-column:hover h3::after {
+  transform: scaleX(1);
+}
+
+.footer-links-column ul {
+  list-style: none;
+}
+
+.footer-links-column ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links-column ul li a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
+  display: inline-block;
+  position: relative;
+}
+
+.footer-links-column ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(135deg, var(--accent-dark-green-light), var(--secondary-yellow), var(--accent-light-green), var(--accent-dark-green-light));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s var(--ease-out-quad);
+}
+
+.footer-links-column ul li a:hover {
+ color: var(--accent-light-green-light);
+}
+.footer-links-column ul li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--accent-light-green-light);
+  text-decoration: none;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link i {
+  font-size: 1.2rem;
+  z-index: 2;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-glass);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  color: #f0faa5;
+}
+
+.social-link:hover::before {
+  opacity: 1;
+}
+
+.footer-divider {
+  position: relative;
+  height: 1px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.hexagon-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hexagon {
+  width: 20px;
+  height: 20px;
+  background-color: var(--secondary-yellow-light);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.footer-bottom {
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--gray-100);
+  font-size: 0.9rem;
+}
+
+.footer-bottom p {
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.heart {
+  color: #ff3366;
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .footer-links-column {
+    width: 100%;
+  }
+}
