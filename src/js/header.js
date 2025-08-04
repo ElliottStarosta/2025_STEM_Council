@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Register GSAP and ScrollToPlugin at the top
+  if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+    gsap.registerPlugin(ScrollToPlugin);
+  }
+
   // Initialize GSAP timeline with enhanced settings
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
@@ -6,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   gsap.set(".header", { y: -120, opacity: 1 });
   gsap.set(".logo-main", { opacity: 1, x: 0, y: 0, scale: 1 }); // Make sure logo is visible
   gsap.set(".logo-subtitle", { opacity: 0.8, x: 0, y: 0, scale: 1 }); // Make subtitle semi-visible
-  
+
   // Set up desktop nav animation BEFORE main timeline (desktop only)
   if (window.innerWidth > 768) {
     gsap.set(".nav-list .nav-item", { opacity: 1, y: 0, scale: 1 }); // Start visible for desktop
@@ -18,39 +23,55 @@ document.addEventListener("DOMContentLoaded", function () {
     y: 0,
     ease: "power4.out",
   })
-  .from(".logo-main", {
-    duration: 1.0,
-    x: -80,
-    opacity: 0,
-    scale: 0.8,
-    ease: "power3.out",
-  }, "-=0.8")
-  .to(".logo-subtitle", {
-    duration: 0.8,
-    opacity: 0.8, // Keep it visible
-    ease: "power3.out",
-  }, "-=0.4")
-  .from(".hamburger", {
-    duration: 0.6,
-    scale: 0,
-    opacity: 0,
-    rotation: 180,
-    ease: "back.out(2.5)",
-  }, "-=0.4");
+    .from(
+      ".logo-main",
+      {
+        duration: 1.0,
+        x: -80,
+        opacity: 0,
+        scale: 0.8,
+        ease: "power3.out",
+      },
+      "-=0.8"
+    )
+    .to(
+      ".logo-subtitle",
+      {
+        duration: 0.8,
+        opacity: 0.8, // Keep it visible
+        ease: "power3.out",
+      },
+      "-=0.4"
+    )
+    .from(
+      ".hamburger",
+      {
+        duration: 0.6,
+        scale: 0,
+        opacity: 0,
+        rotation: 180,
+        ease: "back.out(2.5)",
+      },
+      "-=0.4"
+    );
 
   // Enhanced Desktop nav items animation - ensure they stay visible
   if (window.innerWidth > 768) {
-    tl.from(".nav-list .nav-item", {
-      duration: 0.7,
-      opacity: 0,
-      y: 30,
-      scale: 0.9,
-      stagger: {
-        amount: 0.4,
-        ease: "power2.out"
+    tl.from(
+      ".nav-list .nav-item",
+      {
+        duration: 0.7,
+        opacity: 0,
+        y: 30,
+        scale: 0.9,
+        stagger: {
+          amount: 0.4,
+          ease: "power2.out",
+        },
+        ease: "back.out(1.5)",
       },
-      ease: "back.out(1.5)",
-    }, "-=0.5");
+      "-=0.5"
+    );
   }
 
   // Hamburger menu functionality
@@ -79,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
         rotationX: 0,
         stagger: {
           amount: 0.5,
-          ease: "power2.out"
+          ease: "power2.out",
         },
         delay: 0.2,
         ease: "back.out(1.3)",
@@ -89,11 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
       gsap.fromTo(
         ".nav.mobile-open",
         { opacity: 0, scale: 0.95 },
-        { 
-          duration: 0.5, 
-          opacity: 1, 
+        {
+          duration: 0.5,
+          opacity: 1,
           scale: 1,
-          ease: "power3.out" 
+          ease: "power3.out",
         }
       );
     } else {
@@ -106,14 +127,14 @@ document.addEventListener("DOMContentLoaded", function () {
         rotationX: 15,
         stagger: {
           amount: 0.2,
-          ease: "power2.in"
+          ease: "power2.in",
         },
         ease: "power2.in",
         onComplete: function () {
           hamburger.classList.remove("active");
           nav.classList.remove("mobile-open");
           body.style.overflow = "";
-          
+
           // Reset nav items to visible state for desktop
           if (window.innerWidth > 768) {
             gsap.set(".nav-list .nav-item", { opacity: 1, y: 0, scale: 1 });
@@ -182,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
       y: 0,
       ease: "power3.out",
     });
-    
+
     // Keep subtitle visible
     gsap.to(logoSubtitle, {
       duration: 0.6,
@@ -197,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
       navItems.forEach((item) => {
         item.addEventListener("mouseenter", function () {
           // Don't animate if this item is active
-          if (!item.querySelector('.nav-link.active')) {
+          if (!item.querySelector(".nav-link.active")) {
             gsap.to(item, {
               duration: 0.4,
               y: -3,
@@ -208,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         item.addEventListener("mouseleave", function () {
-          if (!item.querySelector('.nav-link.active')) {
+          if (!item.querySelector(".nav-link.active")) {
             gsap.to(item, {
               duration: 0.4,
               y: 0,
@@ -223,42 +244,123 @@ document.addEventListener("DOMContentLoaded", function () {
 
   addDesktopHoverEffects();
 
-  // Enhanced Active state management
+  // GSAP Smooth Scroll Function
+  function performSmoothScroll(targetSection, targetId, clickedLink) {
+    // Remove active class from all links and their parent items
+    navLinks.forEach((l) => {
+      l.classList.remove("active");
+      l.parentElement.classList.remove("active-item");
+    });
+
+    // Add active class to clicked link and parent item
+    clickedLink.classList.add("active");
+    clickedLink.parentElement.classList.add("active-item");
+
+    // Enhanced click animation
+    gsap.to(clickedLink, {
+      duration: 0.2,
+      scale: 0.92,
+      ease: "power2.out",
+      onComplete: function () {
+        gsap.to(this.targets()[0], {
+          duration: 0.3,
+          scale: 1,
+          ease: "back.out(1.3)",
+        });
+      },
+    });
+
+    // Reset any hover transforms when item becomes active
+    gsap.set(clickedLink.parentElement, {
+      y: 0,
+      scale: 1,
+    });
+
+    // Get header height for offset
+    const header = document.querySelector('.header');
+    const headerHeight = header ? header.offsetHeight : 0;
+
+    // Use GSAP ScrollToPlugin for smooth scrolling
+    if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+      gsap.to(window, {
+        duration: 1.2,
+        scrollTo: {
+          y: targetSection,
+          offsetY: headerHeight + 20,
+          autoKill: true
+        },
+        ease: 'power2.inOut',
+        overwrite: 'auto',
+        onComplete: () => {
+          // Update URL hash
+          if (history.pushState) {
+            history.pushState(null, null, `#${targetId}`);
+          }
+        }
+      });
+    } else {
+      // Fallback if GSAP ScrollToPlugin isn't available
+      console.warn("GSAP ScrollToPlugin not available, using fallback");
+      const targetPosition = targetSection.offsetTop - headerHeight - 20;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+      // Update URL
+      if (history.pushState) {
+        history.pushState(null, null, `#${targetId}`);
+      }
+    }
+  }
+
+  // Enhanced Navigation link click handlers
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
 
-      // Remove active class from all links and their parent items
-      navLinks.forEach((l) => {
-        l.classList.remove("active");
-        l.parentElement.classList.remove("active-item");
-      });
+      // Get target section
+      const targetId = this.getAttribute("href").substring(1);
+      const targetSection = document.getElementById(targetId);
 
-      // Add active class to clicked link and parent item
-      this.classList.add("active");
-      this.parentElement.classList.add("active-item");
+      if (!targetSection) {
+        console.warn(`Section with id "${targetId}" not found`);
+        return;
+      }
 
-      // Enhanced click animation
-      gsap.to(this, {
-        duration: 0.2,
-        scale: 0.92,
-        ease: "power2.out",
-        onComplete: function () {
-          gsap.to(this.targets()[0], {
-            duration: 0.3,
-            scale: 1,
-            ease: "back.out(1.3)",
-          });
-        },
-      });
+      // Close mobile menu if open
+      if (nav.classList.contains("mobile-open")) {
+        hamburger.click();
 
-      // Reset any hover transforms when item becomes active
-      gsap.set(this.parentElement, {
-        y: 0,
-        scale: 1
-      });
+        // Wait for mobile menu to close before scrolling
+        setTimeout(() => {
+          performSmoothScroll(targetSection, targetId, this);
+        }, 500);
+      } else {
+        performSmoothScroll(targetSection, targetId, this);
+      }
     });
   });
+
+  // Optional: Scroll to hash on page load
+  const hash = window.location.hash;
+  if (hash && document.querySelector(hash)) {
+    setTimeout(() => {
+      const header = document.querySelector('.header');
+      const headerHeight = header ? header.offsetHeight : 0;
+      if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+        gsap.to(window, {
+          duration: 1.2,
+          scrollTo: {
+            y: hash,
+            offsetY: headerHeight + 20,
+            autoKill: true
+          },
+          ease: 'power2.inOut',
+          overwrite: 'auto'
+        });
+      }
+    }, 500); // Wait for layout/animations to finish
+  }
 
   // Enhanced Header scroll effect
   let lastScrollY = window.scrollY;
@@ -315,14 +417,14 @@ document.addEventListener("DOMContentLoaded", function () {
         duration: 0.3,
         opacity: 0,
         scale: 0.8,
-        onComplete: function() {
+        onComplete: function () {
           hamburger.classList.remove("active");
           nav.classList.remove("mobile-open");
           body.style.overflow = "";
-          
+
           // Reset nav items for desktop - ensure they're visible
           gsap.set(".nav-list .nav-item", { opacity: 1, y: 0, scale: 1 });
-        }
+        },
       });
     } else if (window.innerWidth > 768) {
       // Ensure nav items are visible on desktop
@@ -331,13 +433,14 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Enhanced page load entrance sequence
-  gsap.fromTo("body", 
+  gsap.fromTo(
+    "body",
     { opacity: 0 },
-    { 
-      duration: 0.8, 
-      opacity: 1, 
+    {
+      duration: 0.8,
+      opacity: 1,
       ease: "power2.out",
-      delay: 0.2
+      delay: 0.2,
     }
   );
 });

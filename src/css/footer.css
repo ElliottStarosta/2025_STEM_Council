@@ -89,6 +89,11 @@
   transition: color 0.3s, transform 0.3s;
   display: inline-block;
   position: relative;
+  padding: 8px 12px;
+  margin: -8px -12px;
+  border-radius: 4px;
+  /* background-color: red; */
+
 }
 
 .footer-links-column ul li a::after {

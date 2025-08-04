@@ -77,6 +77,7 @@
   font-weight: 600;
   position: relative;
   display: inline-block;
+  
 }
 
 .lion-highlight {
@@ -1019,6 +1020,11 @@
     gap: var(--spacing-4xl);
     text-align: center;
   }
+
+  .mission-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
   
   .about-content {
     grid-template-columns: 1fr;
@@ -1033,6 +1039,8 @@
     width: 250px;
     height: 250px;
   }
+
+ 
   
 }
 

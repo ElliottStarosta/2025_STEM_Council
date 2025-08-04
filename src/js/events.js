@@ -378,21 +378,52 @@ class EventsManager {
     }
 
     // Animate header
-    gsap.fromTo(
-      ".events-header",
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
+    // gsap.fromTo(
+    //   ".events-eve",
+    //   { opacity: 0,
+    //     y: 50,
+    //     scale:0.95,
+    //     rotateX: 40,
+    //     transformOrigin: "top center"
+    //   },
+    //   {
+    //     opacity: 1,
+    //     y: 0,
+    //     duration: 0.8,
+    //     ease: "power4.out",
+    //     scrollTrigger: {
+    //       trigger: ".events-header",
+    //       start: "top 85%",
+    //       end: "bottom 20%",
+    //       toggleActions: 'play none none reverse',
+    //     },
+    //   }
+    // );
+    const headerTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".events-header",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    headerTimeline
+      .from(".events-title", {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
         ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".events-header",
-          start: "top 80%",
-          once: true,
+      })
+      .from(
+        ".events-subtitle",
+        {
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          ease: "power2.out",
         },
-      }
-    );
+        "-=0.4"
+      );
 
     // Animate event cards
     const eventCards = document.querySelectorAll(".event-card");
@@ -410,12 +441,12 @@ class EventsManager {
           scrollTrigger: {
             trigger: card,
             start: "top 85%",
-            once: true,
+            end: "bottom 15%",
+            toggleActions: "play none none reverse",
           },
         }
       );
     });
-
 
     // Hover animations for event cards
     eventCards.forEach((card) => {

@@ -21,31 +21,6 @@
   animation: glassShimmer 8s ease-in-out infinite;
 }
 
-@keyframes glassShimmer {
-  0%, 100% {
-    background: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.1) 0%, 
-      rgba(255, 255, 255, 0.05) 100%);
-  }
-  25% {
-    background: linear-gradient(225deg, 
-      rgba(255, 255, 255, 0.15) 0%, 
-      rgba(255, 255, 255, 0.08) 50%,
-      rgba(255, 255, 255, 0.03) 100%);
-  }
-  50% {
-    background: linear-gradient(315deg, 
-      rgba(255, 255, 255, 0.08) 0%, 
-      rgba(255, 255, 255, 0.12) 50%,
-      rgba(255, 255, 255, 0.06) 100%);
-  }
-  75% {
-    background: linear-gradient(45deg, 
-      rgba(255, 255, 255, 0.06) 0%, 
-      rgba(255, 255, 255, 0.14) 30%,
-      rgba(255, 255, 255, 0.04) 100%);
-  }
-}
 
 .header:hover {
   background: linear-gradient(135deg, 
@@ -315,6 +290,33 @@
   }
 }
 
+
+@keyframes glassShimmer {
+  0%, 100% {
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.1) 0%, 
+      rgba(255, 255, 255, 0.05) 100%);
+  }
+  25% {
+    background: linear-gradient(225deg, 
+      rgba(255, 255, 255, 0.15) 0%, 
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0.03) 100%);
+  }
+  50% {
+    background: linear-gradient(315deg, 
+      rgba(255, 255, 255, 0.08) 0%, 
+      rgba(255, 255, 255, 0.12) 50%,
+      rgba(255, 255, 255, 0.06) 100%);
+  }
+  75% {
+    background: linear-gradient(45deg, 
+      rgba(255, 255, 255, 0.06) 0%, 
+      rgba(255, 255, 255, 0.14) 30%,
+      rgba(255, 255, 255, 0.04) 100%);
+  }
+}
+
 /* Hamburger Menu */
 .hamburger {
   display: none;
@@ -403,10 +405,6 @@
   transition: var(--transition-smooth);
 }
 
-.mobile-open .nav-link:hover {
-  background: rgba(36, 126, 12, 0.1);
-  transform: scale(1.05);
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -422,6 +420,10 @@
     display: none;
   }
 
+  .nav-item::before {
+    background: none;
+  }
+
   .nav.mobile-open {
     display: flex;
   }
@@ -433,6 +435,7 @@
   .logo-subtitle {
     font-size: 0.75rem;
   }
+
 }
 
 @media (max-width: 480px) {
