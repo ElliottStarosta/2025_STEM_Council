@@ -7,6 +7,10 @@ let cursorX = 0;
 let cursorY = 0;
 let trailPositions = [];
 
+// Check if device supports hover (desktop) vs touch-only (mobile)
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+const supportsHover = window.matchMedia('(hover: hover)').matches;
+
 // Initialize trail positions
 for (let i = 0; i < trails.length; i++) {
   trailPositions.push({ x: 0, y: 0 });
@@ -142,7 +146,15 @@ function extractGradientColors(backgroundImage) {
 
 // Main function to determine cursor color
 function adjustCursorColor(x, y) {
+  // Temporarily hide cursor to avoid interference with elementFromPoint
+  const originalOpacity = cursor.style.opacity;
+  cursor.style.opacity = '0';
+  
   const element = document.elementFromPoint(x, y);
+  
+  // Restore cursor opacity
+  cursor.style.opacity = originalOpacity;
+  
   if (!element) return;
   
   // Remove existing color classes
@@ -270,9 +282,110 @@ document.addEventListener("mousemove", (e) => {
   }
 });
 
+// Touch movement support for mobile devices
+document.addEventListener("touchmove", (e) => {
+  const touch = e.touches[0];
+  mouseX = touch.clientX;
+  mouseY = touch.clientY;
+  
+  // Adjust cursor color based on touch position
+  adjustCursorColor(touch.clientX, touch.clientY);
+  
+  // Check for interactive elements at touch position
+  const element = document.elementFromPoint(touch.clientX, touch.clientY);
+  if (element) {
+    let currentElement = element;
+    let isInteractive = false;
+    
+    while (currentElement && currentElement !== document.body) {
+      if (currentElement.matches("a, button, .demo-button, .hero-btn, .footer-nav-link, .footer-links-column ul li a, .join-button")) {
+        isInteractive = true;
+        break;
+      }
+      currentElement = currentElement.parentElement;
+    }
+    
+    if (isInteractive) {
+      cursor.classList.add("hover");
+    } else {
+      cursor.classList.remove("hover");
+    }
+  }
+}, { passive: true });
+
+// Touch start for mobile hover detection
+document.addEventListener("touchstart", (e) => {
+  const touch = e.touches[0];
+  mouseX = touch.clientX;
+  mouseY = touch.clientY;
+  
+  // Update cursor position immediately
+  cursorX = touch.clientX;
+  cursorY = touch.clientY;
+  
+  const element = document.elementFromPoint(touch.clientX, touch.clientY);
+  
+  if (element) {
+    // Check if the element or any of its parents is a link or button
+    let currentElement = element;
+    let isInteractive = false;
+    
+    while (currentElement && currentElement !== document.body) {
+      if (currentElement.matches("a, button, .demo-button, .hero-btn, .footer-nav-link, .footer-links-column ul li a, .join-button")) {
+        isInteractive = true;
+        break;
+      }
+      currentElement = currentElement.parentElement;
+    }
+    
+    if (isInteractive) {
+      cursor.classList.add("hover");
+    } else if (element.matches("p, h1, h2, h3, h4, h5, h6")) {
+      cursor.classList.add("text");
+    }
+  }
+  
+  // Add click effect for touch
+  cursor.classList.add("click");
+  // Make trails red
+  trails.forEach((trail) => {
+    trail.classList.add("red");
+  });
+  // Trigger particles
+  particles.forEach((particle, index) => {
+    setTimeout(() => {
+      particle.classList.add("active");
+      setTimeout(() => {
+        particle.classList.remove("active");
+      }, 800);
+    }, index * 50);
+  });
+});
+
+// Touch end for mobile hover detection
+document.addEventListener("touchend", (e) => {
+  // Remove hover and click effects
+  cursor.classList.remove("hover", "text", "click");
+  // Remove red class from trails
+  trails.forEach((trail) => {
+    trail.classList.remove("red");
+  });
+});
+
+// Touch cancel for mobile (when touch is interrupted)
+document.addEventListener("touchcancel", (e) => {
+  // Remove hover and click effects
+  cursor.classList.remove("hover", "text", "click");
+  // Remove red class from trails
+  trails.forEach((trail) => {
+    trail.classList.remove("red");
+  });
+});
+
 // Smooth cursor follow
 function updateCursor() {
-  const speed = 0.15;
+  // Use faster speed on touch devices for more responsive cursor
+  const speed = isTouchDevice ? 0.3 : 0.15;
   cursorX += (mouseX - cursorX) * speed;
   cursorY += (mouseY - cursorY) * speed;
   
@@ -299,7 +412,19 @@ updateCursor();
 
 // Hover effects
 document.addEventListener("mouseover", (e) => {
-  if (e.target.matches("a, button, .demo-button")) {
+  // Check if the element or any of its parents is a link or button
+  let currentElement = e.target;
+  let isInteractive = false;
+  
+  while (currentElement && currentElement !== document.body) {
+    if (currentElement.matches("a, button, .demo-button, .hero-btn, .footer-nav-link, .footer-links-column ul li a, .join-button")) {
+      isInteractive = true;
+      break;
+    }
+    currentElement = currentElement.parentElement;
+  }
+  
+  if (isInteractive) {
     cursor.classList.add("hover");
   } else if (e.target.matches("p, h1, h2, h3, h4, h5, h6")) {
     cursor.classList.add("text");
@@ -307,7 +432,21 @@ document.addEventListener("mouseover", (e) => {
 });
 
 document.addEventListener("mouseout", (e) => {
-  cursor.classList.remove("hover", "text");
+  // Only remove hover if we're not hovering over any interactive element
+  let currentElement = e.relatedTarget;
+  let isInteractive = false;
+  
+  while (currentElement && currentElement !== document.body) {
+    if (currentElement.matches("a, button, .demo-button, .hero-btn, .footer-nav-link, .footer-links-column ul li a, .join-button")) {
+      isInteractive = true;
+      break;
+    }
+    currentElement = currentElement.parentElement;
+  }
+  
+  if (!isInteractive) {
+    cursor.classList.remove("hover", "text");
+  }
 });
 
 // Click effects - RED CURSOR AND TRAILS

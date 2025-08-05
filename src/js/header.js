@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Open menu with enhanced animation
       hamburger.classList.add("active");
       nav.classList.add("mobile-open");
+      body.classList.add("menu-open");
       body.style.overflow = "hidden";
 
       // Enhanced menu items animation
@@ -133,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
         onComplete: function () {
           hamburger.classList.remove("active");
           nav.classList.remove("mobile-open");
+          body.classList.remove("menu-open");
           body.style.overflow = "";
 
           // Reset nav items to visible state for desktop
@@ -244,151 +246,126 @@ document.addEventListener("DOMContentLoaded", function () {
 
   addDesktopHoverEffects();
 
-  // GSAP Smooth Scroll Function
-  function performSmoothScroll(targetSection, targetId, clickedLink) {
-    // Remove active class from all links and their parent items
-    navLinks.forEach((l) => {
-      l.classList.remove("active");
-      l.parentElement.classList.remove("active-item");
-    });
-
-    // Add active class to clicked link and parent item
-    clickedLink.classList.add("active");
-    clickedLink.parentElement.classList.add("active-item");
-
-    // Enhanced click animation
-    gsap.to(clickedLink, {
-      duration: 0.2,
-      scale: 0.92,
-      ease: "power2.out",
-      onComplete: function () {
-        gsap.to(this.targets()[0], {
-          duration: 0.3,
-          scale: 1,
-          ease: "back.out(1.3)",
-        });
-      },
-    });
-
-    // Reset any hover transforms when item becomes active
-    gsap.set(clickedLink.parentElement, {
-      y: 0,
-      scale: 1,
-    });
-
-    // Get header height for offset
-    const header = document.querySelector('.header');
-    const headerHeight = header ? header.offsetHeight : 0;
-
-    // Use GSAP ScrollToPlugin for smooth scrolling
-    if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
-      gsap.to(window, {
-        duration: 1.2,
-        scrollTo: {
-          y: targetSection,
-          offsetY: headerHeight + 20,
-          autoKill: true
-        },
-        ease: 'power2.inOut',
-        overwrite: 'auto',
-        onComplete: () => {
-          // Update URL hash
-          if (history.pushState) {
-            history.pushState(null, null, `#${targetId}`);
-          }
-        }
-      });
-    } else {
-      // Fallback if GSAP ScrollToPlugin isn't available
-      console.warn("GSAP ScrollToPlugin not available, using fallback");
-      const targetPosition = targetSection.offsetTop - headerHeight - 20;
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      });
-      // Update URL
-      if (history.pushState) {
-        history.pushState(null, null, `#${targetId}`);
-      }
-    }
-  }
-
-  // Enhanced Navigation link click handlers
+  // Enhanced Navigation link click handlers - now handled by universal scrolling.js
+  // Active state management for header nav links
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
-      e.preventDefault();
+      // Remove active class from all links and their parent items
+      navLinks.forEach((l) => {
+        l.classList.remove("active");
+        l.parentElement.classList.remove("active-item");
+      });
 
-      // Get target section
-      const targetId = this.getAttribute("href").substring(1);
-      const targetSection = document.getElementById(targetId);
+      // Add active class to clicked link and parent item
+      this.classList.add("active");
+      this.parentElement.classList.add("active-item");
 
-      if (!targetSection) {
-        console.warn(`Section with id "${targetId}" not found`);
-        return;
-      }
-
-      // Close mobile menu if open
-      if (nav.classList.contains("mobile-open")) {
-        hamburger.click();
-
-        // Wait for mobile menu to close before scrolling
-        setTimeout(() => {
-          performSmoothScroll(targetSection, targetId, this);
-        }, 500);
-      } else {
-        performSmoothScroll(targetSection, targetId, this);
-      }
+      // Reset any hover transforms when item becomes active
+      gsap.set(this.parentElement, {
+        y: 0,
+        scale: 1,
+      });
     });
   });
 
-  // Optional: Scroll to hash on page load
-  const hash = window.location.hash;
-  if (hash && document.querySelector(hash)) {
-    setTimeout(() => {
-      const header = document.querySelector('.header');
-      const headerHeight = header ? header.offsetHeight : 0;
-      if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
-        gsap.to(window, {
-          duration: 1.2,
-          scrollTo: {
-            y: hash,
-            offsetY: headerHeight + 20,
-            autoKill: true
-          },
-          ease: 'power2.inOut',
-          overwrite: 'auto'
-        });
-      }
-    }, 500); // Wait for layout/animations to finish
-  }
-
-  // Enhanced Header scroll effect
+  // FIXED: Enhanced Header scroll effect with proper tracking
   let lastScrollY = window.scrollY;
+  let headerHidden = false;
+  let scrollToTopButton = document.getElementById("scrollToTop");
+  let isScrollingDown = false;
+  let scrollDownDistance = 0;
+  let hideThreshold = 100; // Distance to scroll down before hiding
+  let showThreshold = 20; // Distance to scroll up before showing
 
   window.addEventListener("scroll", function () {
     const currentScrollY = window.scrollY;
     const header = document.querySelector(".header");
+    const scrollDelta = currentScrollY - lastScrollY;
 
-    if (!nav.classList.contains("mobile-open")) {
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Enhanced scrolling down animation
+    // Skip if mobile menu is open
+    if (nav.classList.contains("mobile-open")) {
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    // Determine scroll direction
+    if (scrollDelta > 0) {
+      // Scrolling down
+      if (!isScrollingDown) {
+        isScrollingDown = true;
+        scrollDownDistance = 0;
+      }
+      scrollDownDistance += scrollDelta;
+
+      // Hide header after scrolling down the threshold distance
+      if (scrollDownDistance >= hideThreshold && !headerHidden && currentScrollY > 50) {
         gsap.to(header, {
-          duration: 0.5,
+          duration: 0.4,
           y: -120,
           ease: "power3.out",
         });
-      } else {
-        // Enhanced scrolling up animation
+        headerHidden = true;
+      }
+    } else if (scrollDelta < 0) {
+      // Scrolling up
+      if (isScrollingDown) {
+        isScrollingDown = false;
+        scrollDownDistance = 0;
+      }
+
+      // Show header immediately when scrolling up more than threshold OR when near top
+      if ((Math.abs(scrollDelta) >= showThreshold || currentScrollY <= 100) && headerHidden) {
         gsap.to(header, {
-          duration: 0.6,
+          duration: 0.5,
           y: 0,
           ease: "back.out(1.2)",
         });
+        headerHidden = false;
+        
+        // Hide scroll to top button when header appears
+        if (scrollToTopButton) {
+          scrollToTopButton.classList.remove("visible");
+        }
+      }
+    }
+
+    // Always show header at the very top
+    if (currentScrollY <= 10 && headerHidden) {
+      gsap.to(header, {
+        duration: 0.5,
+        y: 0,
+        ease: "back.out(1.2)",
+      });
+      headerHidden = false;
+      
+      // Hide scroll to top button when at the top
+      if (scrollToTopButton) {
+        scrollToTopButton.classList.remove("visible");
+      }
+    }
+
+    // Scroll to top button visibility - inverse relationship with header
+    if (scrollToTopButton) {
+      if (currentScrollY > 300 && headerHidden) {
+        scrollToTopButton.classList.add("visible");
+      } else if (!headerHidden) {
+        scrollToTopButton.classList.remove("visible");
       }
     }
 
     lastScrollY = currentScrollY;
   });
+
+  // Scroll to top functionality
+  if (scrollToTopButton) {
+    scrollToTopButton.addEventListener("click", function () {
+      gsap.to(window, {
+        duration: 1.2,
+        scrollTo: { y: 0 },
+        ease: "power3.out"
+      });
+    });
+  }
 
   // Enhanced Hamburger hover effect
   hamburger.addEventListener("mouseenter", function () {
@@ -420,6 +397,7 @@ document.addEventListener("DOMContentLoaded", function () {
         onComplete: function () {
           hamburger.classList.remove("active");
           nav.classList.remove("mobile-open");
+          body.classList.remove("menu-open");
           body.style.overflow = "";
 
           // Reset nav items for desktop - ensure they're visible

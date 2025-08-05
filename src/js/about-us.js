@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
         stagger: 0.05,
       });
 
-      // Show tooltip
+      // Show tooltip with smart positioning
       if (tooltip && tooltipContent[stemType]) {
         const titleEl = tooltip.querySelector(".tooltip-title");
         const descEl = tooltip.querySelector(".tooltip-description");
@@ -189,9 +189,63 @@ document.addEventListener("DOMContentLoaded", function () {
         if (titleEl) titleEl.textContent = tooltipContent[stemType].title;
         if (descEl) descEl.textContent = tooltipContent[stemType].description;
 
+        // Position tooltip relative to the orb
+        const orbRect = this.getBoundingClientRect();
+        const containerRect = this.closest('.mission-visual').getBoundingClientRect();
+        
+        // Remove any existing position classes
+        tooltip.classList.remove('position-right', 'position-left', 'position-top', 'position-bottom');
+        
+        // Determine best position based on orb location and available space
+        const stemClass = this.className;
+        let position = 'position-right'; // default
+        
+        // Calculate available space in each direction
+        const orbCenterX = orbRect.left + orbRect.width / 2 - containerRect.left;
+        const orbCenterY = orbRect.top + orbRect.height / 2 - containerRect.top;
+        const containerWidth = containerRect.width;
+        const containerHeight = containerRect.height;
+        
+        // Determine best position to avoid blocking the orb and stay within container
+        if (stemClass.includes('stem-science')) {
+          // Science orb - prefer bottom, fallback to right if not enough space
+          if (orbCenterY + 100 < containerHeight) {
+            position = 'position-bottom';
+          } else {
+            position = 'position-right';
+          }
+        } else if (stemClass.includes('stem-tech')) {
+          // Tech orb - prefer left, fallback to bottom if not enough space
+          if (orbCenterX - 150 > 0) {
+            position = 'position-left';
+          } else {
+            position = 'position-bottom';
+          }
+        } else if (stemClass.includes('stem-engineering')) {
+          // Engineering orb - prefer top, fallback to left if not enough space
+          if (orbCenterY - 100 > 0) {
+            position = 'position-top';
+          } else {
+            position = 'position-left';
+          }
+        } else if (stemClass.includes('stem-math')) {
+          // Math orb - prefer right, fallback to top if not enough space
+          if (orbCenterX + 150 < containerWidth) {
+            position = 'position-right';
+          } else {
+            position = 'position-top';
+          }
+        }
+        
+        tooltip.classList.add(position);
+        
+        // Position the tooltip at the orb's center for proper centering
+        tooltip.style.position = 'absolute';
+        tooltip.style.left = orbCenterX + 'px';
+        tooltip.style.top = orbCenterY + 'px';
+
         gsap.to(tooltip, {
           opacity: 1,
-          y: -10,
           duration: 0.3,
           ease: "power2.out",
         });
@@ -227,7 +281,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (tooltip) {
         gsap.to(tooltip, {
           opacity: 0,
-          y: 0,
           duration: 0.3,
           ease: "power2.out",
         });
@@ -322,27 +375,27 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ==========================================
-  // STEM Breakdown Section Animations (Right Side)
+  // Impact Statistics Section Animations (Right Side)
   // ==========================================
 
-  // STEM items staggered animation
-  gsap.to(".stem-item", {
-    x: 0,
+  // Impact statistics staggered animation
+  gsap.to(".stat-item", {
+    y: 0,
     opacity: 1,
     duration: 0.8,
     ease: "power3.out",
     stagger: 0.15,
     scrollTrigger: {
-      trigger: ".stem-breakdown",
+      trigger: ".impact-stats",
       start: "top 80%",
       end: "bottom 20%",
       toggleActions: "play none none reverse",
     },
   });
 
-  // STEM item hover interactions with enhanced effects
-  const stemItems = document.querySelectorAll(".stem-item");
-  stemItems.forEach((item) => {
+  // Impact statistics hover interactions
+  const statItems = document.querySelectorAll(".stat-item");
+  statItems.forEach((item) => {
     item.addEventListener("mouseenter", function () {
       gsap.to(this, {
         y: -5,
@@ -351,21 +404,13 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power2.out",
       });
 
-      // Animate the STEM letter
-      const stemLetter = this.querySelector(".stem-letter");
-      if (stemLetter) {
-        gsap.to(stemLetter, {
+      // Animate the stat number
+      const statNumber = this.querySelector(".stat-number");
+      if (statNumber) {
+        gsap.to(statNumber, {
           scale: 1.1,
-          rotation: 5,
           duration: 0.3,
           ease: "back.out(1.7)",
-        });
-
-        // Pulse effect for the letter background
-        gsap.to(stemLetter, {
-          boxShadow: "0 6px 20px rgba(66, 166, 76, 0.4)",
-          duration: 0.3,
-          ease: "power2.out",
         });
       }
     });
@@ -378,12 +423,10 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power2.out",
       });
 
-      const stemLetter = this.querySelector(".stem-letter");
-      if (stemLetter) {
-        gsap.to(stemLetter, {
+      const statNumber = this.querySelector(".stat-number");
+      if (statNumber) {
+        gsap.to(statNumber, {
           scale: 1,
-          rotation: 0,
-          boxShadow: "0 4px 15px rgba(66, 166, 76, 0.25)",
           duration: 0.3,
           ease: "power2.out",
         });

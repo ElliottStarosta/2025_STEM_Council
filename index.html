@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="src/css/events.css" />
   <link rel="stylesheet" href="src/css/footer.css" />
   <link rel="stylesheet" href="src/css/resources.css" />
+  <link rel="stylesheet" href="src/css/contact.css" />
 
   <!-- Fonts -->
   <link
@@ -86,20 +87,20 @@
         <!-- Right Side Content - Enhanced -->
         <div class="hero-right">
           <div class="hero-buttons">
-            <button class="hero-btn hero-btn-primary" data-btn="events">
+            <a href="#events" class="hero-btn hero-btn-primary">
               <div class="btn-content">
                 <div class="btn-icon">🎯</div>
                 <span class="btn-text">Explore Events</span>
               </div>
               <span class="btn-arrow">→</span>
-            </button>
-            <button class="hero-btn hero-btn-secondary" data-btn="clubs">
+            </a>
+            <a href="#clubs" class="hero-btn hero-btn-secondary">
               <div class="btn-content">
                 <div class="btn-icon">🚀</div>
                 <span class="btn-text">Join Clubs</span>
               </div>
               <span class="btn-arrow">→</span>
-            </button>
+            </a>
           </div>
 
           <!-- Add some stats to make right side more interesting -->
@@ -337,36 +338,26 @@
               Lion has the opportunity to explore what STEM truly means.
             </p>
 
-            <div class="stem-breakdown">
-              <div class="stem-item" data-stem="science">
-                <div class="stem-letter">S</div>
-                <div class="stem-word">Science</div>
-                <div class="stem-desc">
-                  Exploring the natural world through observation and
-                  experimentation
-                </div>
+            <div class="impact-stats">
+              <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Students Engaged</div>
+                <div class="stat-desc">Active participation across all STEM programs</div>
               </div>
-              <div class="stem-item" data-stem="technology">
-                <div class="stem-letter">T</div>
-                <div class="stem-word">Technology</div>
-                <div class="stem-desc">
-                  Applying scientific knowledge to create innovative solutions
-                </div>
+              <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">STEM Clubs</div>
+                <div class="stat-desc">From robotics to environmental science</div>
               </div>
-              <div class="stem-item" data-stem="engineering">
-                <div class="stem-letter">E</div>
-                <div class="stem-word">Engineering</div>
-                <div class="stem-desc">
-                  Designing and building systems that solve real-world
-                  problems
-                </div>
+              <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Events Hosted</div>
+                <div class="stat-desc">Workshops, competitions, and showcases</div>
               </div>
-              <div class="stem-item" data-stem="math">
-                <div class="stem-letter">M</div>
-                <div class="stem-word">Math</div>
-                <div class="stem-desc">
-                  The universal language that connects all STEM disciplines
-                </div>
+              <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Success Rate</div>
+                <div class="stat-desc">Students finding their STEM passion</div>
               </div>
             </div>
           </div>
@@ -779,63 +770,115 @@
     </div>
   </section>
 
-  <footer class="site-footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-logo">
-            <h2>Earl STEM Council</h2>
-            <p class="tagline">Join the community, build the future of Earl STEM.</p>
-          </div>
-
-          <div class="footer-links">
-            <div class="footer-links-column">
-              <h3>Navigation</h3>
-              <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#clubs">Clubs</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </div>
-
-            <div class="footer-links-column">
-              <h3>Connect</h3>
-              <div class="social-links">
-                <a href="https://instagram.com/..." class="social-link">
-                  <i class="ri-instagram-line"></i>
-                </a>
-                <a href="https://discord.com/invite/..." class="social-link">
-                  <i class="ri-discord-line"></i>
-                </a>
-                <a href="mailto:earlstem@gmail.com" class="social-link">
-                  <i class="ri-mail-line"></i>
-                </a>
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-header">
+        <h2 class="contact-title">Contact Us</h2>
+        <p class="contact-subtitle">
+          Have questions about our STEM programs? Want to join a club or attend an event? We'd love to hear from you!
+        </p>
+      </div>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <a href="mailto:earlstem@gmail.com" class="contact-card-link">
+            <div class="contact-card">
+              <div class="icon-wrapper">
+                <i class="ri-mail-line"></i>
               </div>
+              <h3>Email Us</h3>
+              <p>earlstem@gmail.com</p>
             </div>
-          </div>
+          </a>
+          
+          <a href="https://instagram.com/earl.stem.council" target="_blank" class="contact-card-link">
+            <div class="contact-card">
+              <div class="icon-wrapper">
+                <i class="ri-instagram-line"></i>
+              </div>
+              <h3>Instagram</h3>
+              <p>@earl.stem.council</p>
+            </div>
+          </a>
+          
+          <a href="https://discord.gg/your-invite-link" target="_blank" class="contact-card-link">
+            <div class="contact-card">
+              <div class="icon-wrapper">
+                <i class="ri-discord-line"></i>
+              </div>
+              <h3>Discord</h3>
+              <p>Join our community server</p>
+            </div>
+          </a>
+        </div>
+        
+        <div class="contact-form-container">
+          <form id="contactForm" class="contact-form" action="https://formspree.io/f/mblgnkja" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Subject" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" id="submitBtn" class="submit-btn">
+              <i class="ri-send-plane-fill"></i> Send Message
+            </button>
+          </form>
         </div>
       </div>
+    </div>
 
-      <div class="footer-divider">
-        <div class="hexagon-container">
-          <div class="hexagon"></div>
-          <div class="hexagon"></div>
-          <div class="hexagon"></div>
-        </div>
+    <!-- Background Elements -->
+    <div class="contact-bg">
+      <div class="contact-bg-circle contact-bg-circle-1"></div>
+      <div class="contact-bg-circle contact-bg-circle-2"></div>
+      <div class="contact-bg-circle contact-bg-circle-3"></div>
+      <div class="contact-particles">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+        <div class="particle particle-6"></div>
+        <div class="particle particle-7"></div>
+        <div class="particle particle-8"></div>
+        <div class="particle particle-9"></div>
+        <div class="particle particle-10"></div>
+        <div class="particle particle-11"></div>
+        <div class="particle particle-12"></div>
       </div>
+    </div>
+  </section>
 
-      <div class="footer-bottom">
-        <div class="container">
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-bottom">
           <p>&copy; 2025-2026 Earl of March STEM Council. All rights reserved.</p>
-          <p>
-            Made with <span class="heart">❤</span> by the STEM Council Team
-          </p>
+          <p>Made with <span class="heart">❤</span> by the STEM Council Team</p>
         </div>
       </div>
+    </div>
   </footer>
+
+  <!-- Scroll to top button -->
+  <button class="scroll-to-top" id="scrollToTop">
+    <i class="ri-arrow-up-line"></i>
+  </button>
 
   <div class="custom-cursor" id="customCursor">
     <div class="cursor-ring"></div>
@@ -859,6 +902,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 
   <script src="src/js/header.js"></script>
+  <script src="src/js/scrolling.js"></script>
   <script src="src/js/hero.js"></script>
   <script src="src/js/about-us.js"></script>
   <script src="src/js/clubs.js"></script>
@@ -866,6 +910,7 @@
   <script src="src/js/footer.js"></script>
   <script src="src/js/cursor.js"></script>
   <script src="src/js/resources.js"></script>
+  <script src="src/js/contact.js"></script>
 </body>
 
 </html>

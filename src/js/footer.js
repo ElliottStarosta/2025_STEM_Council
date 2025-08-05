@@ -28,40 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
-  // Footer links columns animation with stagger
-  gsap.to('.footer-links-column', {
+  // Footer content animation
+  gsap.to('.footer-content', {
     opacity: 1,
     y: 0,
-    stagger: 0.2,
     duration: 0.8,
     delay: 0.4,
     ease: 'power2.out',
     scrollTrigger: {
-      trigger: '.footer-links',
+      trigger: '.site-footer',
       start: 'top 85%',
       toggleActions: 'play none none none'
     }
-  });
-  
-  // Animate hexagons
-  gsap.to('.hexagon', {
-    opacity: 1,
-    stagger: 0.3,
-    duration: 1,
-    scrollTrigger: {
-      trigger: '.footer-divider',
-      start: 'top 90%',
-      toggleActions: 'play none none none'
-    }
-  });
-  
-  // Rotate hexagons continuously
-  gsap.to('.hexagon', {
-    rotation: 360,
-    repeat: -1,
-    duration: 8,
-    ease: 'linear',
-    stagger: 1
   });
   
   // Animate footer bottom text
@@ -105,13 +83,5 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: 'power2.out'
       });
     });
-  });
-  
-  // Shimmer effect on divider
-  gsap.to('.footer-divider', {
-    backgroundPosition: '200% center',
-    duration: 5,
-    repeat: -1,
-    ease: 'linear'
   });
 });

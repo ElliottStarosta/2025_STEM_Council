@@ -189,6 +189,7 @@
 .hub-text {
   font-family: var(--font-secondary);
   font-size: var(--font-size-lg);
+  letter-spacing: 0.15rem;
   font-weight: 700;
   /* color: var(--white); */
   color: var(--bg-primary);
@@ -620,9 +621,6 @@
 
 .stem-tooltip {
   position: absolute;
-  bottom: -80px;
-  left: 50%;
-  transform: translateX(-50%);
   background: linear-gradient(135deg, 
     rgba(255, 255, 255, 0.95),
     rgba(66, 166, 76, 0.05)
@@ -633,17 +631,131 @@
   padding: var(--spacing-base) var(--spacing-lg);
   box-shadow: 0 8px 32px rgba(66, 166, 76, 0.15);
   opacity: 0;
-  transform: translateX(-50%) translateY(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
   z-index: 10;
   min-width: 200px;
+  max-width: 300px;
+  width: fit-content;
   text-align: center;
+  transform: translateY(10px);
+  white-space: normal;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40%;
 }
 
-.stem-tooltip.show {
+/* Tooltip positioning classes - centered relative to orb */
+.stem-tooltip.position-right {
+  left: 60px; /* Distance from orb center */
+  top: 50%;
+  transform: translateY(-50%) translateY(10px);
+}
+
+.stem-tooltip.position-left {
+  right: 60px; /* Distance from orb center */
+  top: 50%;
+  transform: translateY(-50%) translateY(10px);
+}
+
+.stem-tooltip.position-top {
+  bottom: 60px; /* Distance from orb center */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+}
+
+.stem-tooltip.position-bottom {
+  top: 60px; /* Distance from orb center */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+}
+
+/* Tooltip arrow indicators */
+.stem-tooltip.position-right::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid rgba(66, 166, 76, 0.2);
+}
+
+.stem-tooltip.position-left::before {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid rgba(66, 166, 76, 0.2);
+}
+
+.stem-tooltip.position-top::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid rgba(66, 166, 76, 0.2);
+}
+
+.stem-tooltip.position-bottom::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(66, 166, 76, 0.2);
+}
+
+/* Show states for different positions */
+.stem-tooltip.position-right.show,
+.stem-tooltip.position-left.show {
+  opacity: 1;
+  transform: translateY(-50%) translateY(0);
+}
+
+.stem-tooltip.position-top.show,
+.stem-tooltip.position-bottom.show {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+/* Mobile show states */
+@media (max-width: 768px) {
+  .stem-tooltip.position-right.show,
+  .stem-tooltip.position-left.show,
+  .stem-tooltip.position-top.show,
+  .stem-tooltip.position-bottom.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.tooltip-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .tooltip-title {
@@ -659,6 +771,9 @@
   color: var(--text-secondary);
   margin: 0;
   line-height: var(--line-height-relaxed);
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* ==========================================
@@ -857,6 +972,70 @@
 }
 
 /* ==========================================
+   Impact Statistics Section
+   ========================================== */
+
+.impact-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.stat-item {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.6),
+    rgba(66, 166, 76, 0.03)
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(66, 166, 76, 0.1);
+  transition: var(--transition-smooth);
+  text-align: center;
+  transform: translateY(30px);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.stat-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(66, 166, 76, 0.12);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.8),
+    rgba(66, 166, 76, 0.06)
+  );
+}
+
+.stat-number {
+  font-family: var(--font-secondary);
+  letter-spacing: 0.05em;
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: var(--spacing-sm);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.stat-desc {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ==========================================
    Background Elements
    ========================================== */
 
@@ -1014,6 +1193,36 @@
    Responsive Design
    ========================================== */
 
+@media (max-width: 1455px) {
+  /* Adjust tooltip sizing for medium screens */
+  .stem-tooltip {
+    min-width: 160px;
+    max-width: 200px;
+    width: auto;
+    padding: var(--spacing-sm) var(--spacing-base);
+  }
+}
+
+@media (max-width: 1340px) {
+  /* Further reduce tooltip width for smaller screens */
+  .stem-tooltip {
+    min-width: 140px;
+    max-width: 180px;
+    width: auto;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}
+
+@media (max-width: 1200px) {
+  /* Even smaller tooltip for very small screens */
+  .stem-tooltip {
+    min-width: 120px;
+    max-width: 160px;
+    width: auto;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}
+
 @media (max-width: 992px) {
   .about-mission {
     grid-template-columns: 1fr;
@@ -1035,13 +1244,10 @@
     font-size: var(--font-size-3xl);
   }
   
-  .mission-icon {
-    width: 250px;
-    height: 250px;
+  /* Hide the entire mission visual container on screens 992px or less */
+  .mission-visual {
+    display: none !important;
   }
-
- 
-  
 }
 
 @media (max-width: 768px) {
@@ -1078,6 +1284,19 @@
     font-size: var(--font-size-base);
   }
   
+  .impact-stats {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-base);
+  }
+  
+  .stat-item {
+    padding: var(--spacing-base);
+  }
+  
+  .stat-number {
+    font-size: var(--font-size-2xl);
+  }
+  
   .feature-item {
     flex-direction: column;
     text-align: center;
@@ -1088,9 +1307,9 @@
     display: none;
   }
 
+  /* Hide the entire mission icon container on mobile */
   .mission-icon-container {
-    width: 300px;
-    height: 300px;
+    display: none !important;
   }
   
   .hub-core {
@@ -1100,15 +1319,6 @@
   
   .hub-text {
     font-size: var(--font-size-base);
-  }
-  
-  .stem-orb {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .orb-icon {
-    font-size: var(--font-size-xl);
   }
   
   .ring-1 {
@@ -1124,12 +1334,6 @@
   .ring-3 {
     width: 180px;
     height: 180px;
-  }
-  
-  .stem-tooltip {
-    bottom: -60px;
-    min-width: 180px;
-    padding: var(--spacing-sm) var(--spacing-base);
   }
 }
 

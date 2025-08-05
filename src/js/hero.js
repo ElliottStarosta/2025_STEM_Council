@@ -202,68 +202,15 @@ function initButtonInteractions() {
       });
     });
 
-    // Click handlers for navigation
+    // Click handlers for navigation (now handled by universal scrolling.js)
     button.addEventListener("click", function (event) {
-      const btnType = this.getAttribute("data-btn");
-
       // Add click ripple effect
       createRippleEffect(this, event);
-
-      // Handle button actions with smooth scrolling
-      if (btnType === "events") {
-        scrollToSection("events");
-      } else if (btnType === "clubs") {
-        scrollToSection("clubs");
-      }
     });
   });
 }
 
-// Smooth scroll function for hero buttons
-function scrollToSection(sectionId) {
-  const targetSection = document.getElementById(sectionId);
-  
-  if (!targetSection) {
-    console.warn(`Section with id "${sectionId}" not found`);
-    return;
-  }
 
-  // Get header height for offset
-  const header = document.querySelector('.header');
-  const headerHeight = header ? header.offsetHeight : 0;
-
-  // Use GSAP ScrollToPlugin for smooth scrolling (same as header)
-  if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
-    gsap.to(window, {
-      duration: 1.2,
-      scrollTo: {
-        y: targetSection,
-        offsetY: headerHeight + 20,
-        autoKill: true
-      },
-      ease: 'power2.inOut',
-      overwrite: 'auto',
-      onComplete: () => {
-        // Update URL hash
-        if (history.pushState) {
-          history.pushState(null, null, `#${sectionId}`);
-        }
-      }
-    });
-  } else {
-    // Fallback if GSAP ScrollToPlugin isn't available
-    console.warn("GSAP ScrollToPlugin not available, using fallback");
-    const targetPosition = targetSection.offsetTop - headerHeight - 20;
-    window.scrollTo({
-      top: targetPosition,
-      behavior: "smooth",
-    });
-    // Update URL
-    if (history.pushState) {
-      history.pushState(null, null, `#${sectionId}`);
-    }
-  }
-}
 
 // Enhanced ripple effect
 function createRippleEffect(button, event) {
