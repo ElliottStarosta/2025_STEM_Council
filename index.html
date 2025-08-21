@@ -19,11 +19,14 @@
   <link
     href="https://api.fontshare.com/v2/css?f[]=bespoke-serif@400&f[]=tanker@400&f[]=supreme@400&f[]=chubbo@700&display=swap"
     rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" media="print"
+      <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" media="print"
     onload="this.media='all'">
 </head>
 
 <body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
   <header class="header">
     <div class="container">
       <div class="header-content">
@@ -64,7 +67,7 @@
       </div>
     </div>
   </header>
-  <section class="hero" id="home">
+  <section class="hero" id="home" id="main-content">
     <div class="container">
       <div class="hero-content">
         <!-- Left Side Content -->
@@ -86,22 +89,26 @@
 
         <!-- Right Side Content - Enhanced -->
         <div class="hero-right">
-          <div class="hero-buttons">
-            <a href="#events" class="hero-btn hero-btn-primary">
-              <div class="btn-content">
-                <div class="btn-icon">🎯</div>
-                <span class="btn-text">Explore Events</span>
-              </div>
-              <span class="btn-arrow">→</span>
-            </a>
-            <a href="#clubs" class="hero-btn hero-btn-secondary">
-              <div class="btn-content">
-                <div class="btn-icon">🚀</div>
-                <span class="btn-text">Join Clubs</span>
-              </div>
-              <span class="btn-arrow">→</span>
-            </a>
-          </div>
+                     <div class="hero-buttons">
+             <a href="#events" class="hero-btn hero-btn-primary">
+               <div class="btn-content">
+                 <div class="btn-icon">
+                   <i class="ri-gemini-fill"></i>
+                 </div>
+                 <span class="btn-text">Explore Events</span>
+               </div>
+               <span class="btn-arrow">→</span>
+             </a>
+             <a href="#clubs" class="hero-btn hero-btn-secondary">
+               <div class="btn-content">
+                 <div class="btn-icon">
+                   <i class="ri-rocket-line"></i>
+                 </div>
+                 <span class="btn-text">Join Clubs</span>
+               </div>
+               <span class="btn-arrow">→</span>
+             </a>
+           </div>
 
           <!-- Add some stats to make right side more interesting -->
           <div class="hero-stats">
@@ -172,56 +179,64 @@
               </div>
             </div>
 
-            <!-- Floating STEM Elements -->
-            <div class="floating-elements">
-              <div class="stem-orb stem-science" data-stem="science">
-                <div class="orb-inner">
-                  <div class="orb-icon">🔬</div>
-                  <!-- <div class="orb-particles">
-                      <div class="particle"></div>
-                      <div class="particle"></div>
-                      <div class="particle"></div>
-                    </div> -->
-                </div>
-                <!-- <div class="orb-trail"></div> -->
-              </div>
+                         <!-- Floating STEM Elements -->
+             <div class="floating-elements">
+               <div class="stem-orb stem-science" data-stem="science">
+                 <div class="orb-inner">
+                   <div class="orb-icon">
+                     <i class="ri-microscope-fill"></i>
+                   </div>
+                   <!-- <div class="orb-particles">
+                       <div class="particle"></div>
+                       <div class="particle"></div>
+                       <div class="particle"></div>
+                     </div> -->
+                 </div>
+                 <!-- <div class="orb-trail"></div> -->
+               </div>
 
-              <div class="stem-orb stem-tech" data-stem="technology">
-                <div class="orb-inner">
-                  <div class="orb-icon">💻</div>
-                  <!-- <div class="orb-particles">
-                      <div class="particle"></div>
-                      <div class="particle"></div>
-                      <div class="particle"></div>
-                    </div> -->
-                </div>
-                <!-- <div class="orb-trail"></div> -->
-              </div>
+               <div class="stem-orb stem-tech" data-stem="technology">
+                 <div class="orb-inner">
+                   <div class="orb-icon">
+                     <i class="ri-computer-fill"></i>
+                   </div>
+                   <!-- <div class="orb-particles">
+                       <div class="particle"></div>
+                       <div class="particle"></div>
+                       <div class="particle"></div>
+                     </div> -->
+                 </div>
+                 <!-- <div class="orb-trail"></div> -->
+               </div>
 
-              <div class="stem-orb stem-engineering" data-stem="engineering">
-                <div class="orb-inner">
-                  <div class="orb-icon">⚙️</div>
-                  <!-- <div class="orb-particles">
-                      <div class="particle"></div>
-                      <div class="particle"></div>
-                      <div class="particle"></div>
-                    </div> -->
-                </div>
-                <!-- <div class="orb-trail"></div> -->
-              </div>
+               <div class="stem-orb stem-engineering" data-stem="engineering">
+                 <div class="orb-inner">
+                   <div class="orb-icon">
+                     <i class="ri-settings-3-fill"></i>
+                   </div>
+                   <!-- <div class="orb-particles">
+                       <div class="particle"></div>
+                       <div class="particle"></div>
+                       <div class="particle"></div>
+                     </div> -->
+                 </div>
+                 <!-- <div class="orb-trail"></div> -->
+               </div>
 
-              <div class="stem-orb stem-math" data-stem="math">
-                <div class="orb-inner">
-                  <div class="orb-icon">📐</div>
-                  <!-- <div class="orb-particles">
-                      <div class="particle"></div>
-                      <div class="particle"></div>
-                      <div class="particle"></div>
-                    </div> -->
-                </div>
-                <!-- <div class="orb-trail"></div> -->
-              </div>
-            </div>
+               <div class="stem-orb stem-math" data-stem="math">
+                 <div class="orb-inner">
+                   <div class="orb-icon">
+                     <i class="ri-ruler-fill"></i>
+                   </div>
+                   <!-- <div class="orb-particles">
+                       <div class="particle"></div>
+                       <div class="particle"></div>
+                       <div class="particle"></div>
+                     </div> -->
+                 </div>
+                 <!-- <div class="orb-trail"></div> -->
+               </div>
+             </div>
 
             <!-- Connection Lines -->
             <svg class="connection-lines" viewBox="0 0 400 400">
@@ -292,38 +307,44 @@
               their passions and discover new interests.
             </p>
 
-            <div class="about-features">
-              <div class="feature-item">
-                <div class="feature-icon">🎯</div>
-                <div class="feature-text">
-                  <h4>Organize Events</h4>
-                  <p>
-                    From hackathons to science fairs, we create engaging STEM
-                    experiences
-                  </p>
-                </div>
-              </div>
-              <div class="feature-item">
-                <div class="feature-icon">🤝</div>
-                <div class="feature-text">
-                  <h4>Connect Communities</h4>
-                  <p>
-                    Bringing together diverse STEM clubs and passionate
-                    students
-                  </p>
-                </div>
-              </div>
-              <div class="feature-item">
-                <div class="feature-icon">📚</div>
-                <div class="feature-text">
-                  <h4>Provide Resources</h4>
-                  <p>
-                    Curating tools, materials, and opportunities for STEM
-                    exploration
-                  </p>
-                </div>
-              </div>
-            </div>
+                         <div class="about-features">
+               <div class="feature-item">
+                 <div class="feature-icon">
+                   <i class="ri-focus-2-line"></i>
+                 </div>
+                 <div class="feature-text">
+                   <h4>Organize Events</h4>
+                   <p>
+                     From hackathons to science fairs, we create engaging STEM
+                     experiences
+                   </p>
+                 </div>
+               </div>
+               <div class="feature-item">
+                 <div class="feature-icon">
+                   <i class="ri-shake-hands-fill"></i>
+                 </div>
+                 <div class="feature-text">
+                   <h4>Connect Communities</h4>
+                   <p>
+                     Bringing together diverse STEM clubs and passionate
+                     students
+                   </p>
+                 </div>
+               </div>
+               <div class="feature-item">
+                 <div class="feature-icon">
+                   <i class="ri-book-open-line"></i>
+                 </div>
+                 <div class="feature-text">
+                   <h4>Provide Resources</h4>
+                   <p>
+                     Curating tools, materials, and opportunities for STEM
+                     exploration
+                   </p>
+                 </div>
+               </div>
+             </div>
           </div>
         </div>
 
@@ -555,7 +576,9 @@
       <div class="resources-grid">
         <!-- Video Resources -->
         <div class="resource-card" data-type="videos">
-          <div class="card-icon">🎥</div>
+          <div class="card-icon">
+            <i class="ri-video-fill"></i>
+          </div>
           <div class="card-content">
             <h3 class="card-title">3Blue1Brown Mathematics</h3>
             <p class="card-description">Visual and intuitive approach to learning advanced mathematics concepts</p>
@@ -565,12 +588,14 @@
             </div>
           </div>
           <div class="card-action">
-            <button class="resource-btn">Watch Now</button>
+            <button class="resource-btn" onclick="window.open('https://www.3blue1brown.com/', '_blank')">Visit Now</button>
           </div>
         </div>
 
         <div class="resource-card" data-type="videos">
-          <div class="card-icon">🧪</div>
+          <div class="card-icon">
+            <i class="ri-flask-fill"></i>
+          </div>
           <div class="card-content">
             <h3 class="card-title">Crash Course Chemistry</h3>
             <p class="card-description">Fast-paced, engaging chemistry lessons perfect for exam prep</p>
@@ -580,13 +605,15 @@
             </div>
           </div>
           <div class="card-action">
-            <button class="resource-btn">Watch Now</button>
+            <button class="resource-btn" onclick="window.open('https://thecrashcourse.com/topic/chemistry/', '_blank')">Visit Now</button>
           </div>
         </div>
 
         <!-- Course Resources -->
         <div class="resource-card" data-type="courses">
-          <div class="card-icon">💻</div>
+          <div class="card-icon">
+            <i class="ri-computer-fill"></i>
+          </div>
           <div class="card-content">
             <h3 class="card-title">CS50 Introduction to Computer Science</h3>
             <p class="card-description">Harvard's legendary computer science course, now free online</p>
@@ -596,12 +623,14 @@
             </div>
           </div>
           <div class="card-action">
-            <button class="resource-btn">Start Course</button>
+            <button class="resource-btn" onclick="window.open('https://cs50.harvard.edu/x/', '_blank')">Start Course</button>
           </div>
         </div>
 
         <div class="resource-card" data-type="courses">
-          <div class="card-icon">🔬</div>
+          <div class="card-icon">
+            <i class="ri-microscope-fill"></i>
+          </div>
           <div class="card-content">
             <h3 class="card-title">Khan Academy Physics</h3>
             <p class="card-description">Comprehensive physics curriculum with interactive exercises</p>
@@ -611,13 +640,15 @@
             </div>
           </div>
           <div class="card-action">
-            <button class="resource-btn">Start Course</button>
+            <button class="resource-btn" onclick="window.open('https://www.khanacademy.org/science/highschool-physics','_blank')">Start Course</button>
           </div>
         </div>
 
         <!-- Tool Resources -->
         <div class="resource-card" data-type="tools">
-          <div class="card-icon">📊</div>
+          <div class="card-icon">
+            <i class="ri-bar-chart-fill"></i>
+          </div>
           <div class="card-content">
             <h3 class="card-title">Desmos Graphing Calculator</h3>
             <p class="card-description">Advanced online graphing calculator for mathematical exploration</p>
@@ -627,12 +658,14 @@
             </div>
           </div>
           <div class="card-action">
-            <button class="resource-btn">Use Tool</button>
+            <button class="resource-btn" onclick="window.open('https://www.desmos.com/calculator','_blank')">Use Tool</button>
           </div>
         </div>
 
         <div class="resource-card" data-type="tools">
-          <div class="card-icon">⚙️</div>
+          <div class="card-icon">
+            <i class="ri-settings-3-fill"></i>
+          </div>
           <div class="card-content">
             <h3 class="card-title">Arduino IDE</h3>
             <p class="card-description">Official development environment for Arduino microcontroller programming</p>
@@ -642,28 +675,49 @@
             </div>
           </div>
           <div class="card-action">
-            <button class="resource-btn">Download</button>
+            <button class="resource-btn" onclick="window.open('https://www.arduino.cc/en/software/','_blank')">Download</button>
           </div>
         </div>
 
         <!-- Competition Resources -->
         <div class="resource-card" data-type="competitions">
-          <div class="card-icon">🏆</div>
+          <div class="card-icon">
+            <i class="ri-medal-fill"></i>
+          </div>
           <div class="card-content">
-            <h3 class="card-title">Science Olympiad</h3>
-            <p class="card-description">National STEM competition with 23 events testing science knowledge</p>
+            <h3 class="card-title">Waterloo Math Contests</h3>
+            <p class="card-description">Challenging math competitions for high school students, testing problem-solving and critical thinking skills</p>
             <div class="card-tags">
               <span class="tag">Competition</span>
-              <span class="tag">Team Event</span>
+              <span class="tag">Individual Event</span>
             </div>
           </div>
           <div class="card-action">
-            <button class="resource-btn">Learn More</button>
+            <button class="resource-btn" onclick="window.open('https://cemc.uwaterloo.ca/contests?field_format_value=All&exposed_month=All&subject_area=3','_blank')">Learn More</button>
           </div>
         </div>
+        <div class="resource-card" data-type="competitions">
+          <div class="card-icon">
+            <i class="ri-medal-fill"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Waterloo Computing Contests</h3>
+            <p class="card-description">Challenging coding competitions for high school students, testing problem-solving and critical thinking skills</p>
+            <div class="card-tags">
+              <span class="tag">Competition</span>
+              <span class="tag">Coding</span>
+            </div>
+          </div>
+          <div class="card-action">
+            <button class="resource-btn" onclick="window.open('https://cemc.uwaterloo.ca/contests?field_format_value=All&exposed_month=All&subject_area=4','_blank')">Learn More</button>
+          </div>
+        </div>
+        
 
         <div class="resource-card" data-type="competitions">
-          <div class="card-icon">🎯</div>
+          <div class="card-icon">
+            <i class="ri-robot-2-fill"></i>
+          </div>
           <div class="card-content">
             <h3 class="card-title">FIRST Robotics Competition</h3>
             <p class="card-description">International high school robotics competition combining STEM with real-world
@@ -674,28 +728,18 @@
             </div>
           </div>
           <div class="card-action">
-            <button class="resource-btn">Register</button>
+            <button class="resource-btn" onclick="window.open('https://www.firstinspires.org/robotics/frc','_blank')">Learn More</button>
+            <button class="resource-btn" onclick="window.open('https://www.eomrobotics.com/?fbclid=PAZXh0bgNhZW0CMTEAAadYj8wym7ftG9jMCgn6PMlmFHPJ__yTjtUzOo8FMX77VWVU0gSrWz8pkdEZKQ_aem_XScWnE_KzAUe6B51afZ6YA','_blank')">Our Team</button>
           </div>
         </div>
 
         <!-- Additional Resources -->
-        <div class="resource-card" data-type="videos">
-          <div class="card-icon">🚀</div>
-          <div class="card-content">
-            <h3 class="card-title">SpaceX Starship Development</h3>
-            <p class="card-description">Behind-the-scenes look at cutting-edge aerospace engineering</p>
-            <div class="card-tags">
-              <span class="tag">Engineering</span>
-              <span class="tag">Aerospace</span>
-            </div>
-          </div>
-          <div class="card-action">
-            <button class="resource-btn">Watch Now</button>
-          </div>
-        </div>
+       
 
         <div class="resource-card" data-type="tools">
-          <div class="card-icon">🧬</div>
+          <div class="card-icon">
+            <i class="ri-dna-fill"></i>
+          </div>
           <div class="card-content">
             <h3 class="card-title">Protein Data Bank</h3>
             <p class="card-description">3D structural data of proteins and nucleic acids for molecular biology research
@@ -706,39 +750,11 @@
             </div>
           </div>
           <div class="card-action">
-            <button class="resource-btn">Explore</button>
+            <button class="resource-btn" onclick="window.open('https://www.rcsb.org/','_blank')">Explore</button>
           </div>
         </div>
 
-        <div class="resource-card" data-type="courses">
-          <div class="card-icon">🌱</div>
-          <div class="card-content">
-            <h3 class="card-title">MIT Environmental Science</h3>
-            <p class="card-description">Explore sustainability and environmental engineering solutions</p>
-            <div class="card-tags">
-              <span class="tag">Environmental</span>
-              <span class="tag">Sustainability</span>
-            </div>
-          </div>
-          <div class="card-action">
-            <button class="resource-btn">Start Course</button>
-          </div>
-        </div>
-
-        <div class="resource-card" data-type="competitions">
-          <div class="card-icon">🔢</div>
-          <div class="card-content">
-            <h3 class="card-title">International Math Olympiad</h3>
-            <p class="card-description">Prestigious mathematics competition for high school students worldwide</p>
-            <div class="card-tags">
-              <span class="tag">Mathematics</span>
-              <span class="tag">International</span>
-            </div>
-          </div>
-          <div class="card-action">
-            <button class="resource-btn">Prepare</button>
-          </div>
-        </div>
+        
       </div>
 
       <div class="resources-cta">
