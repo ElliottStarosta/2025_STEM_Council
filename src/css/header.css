@@ -16,7 +16,7 @@
   box-shadow: 
     0 8px 32px rgba(80, 184, 11, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  z-index: var(--z-fixed);
+  z-index: 10000;
   transition: var(--transition-smooth);
   animation: glassShimmer 8s ease-in-out infinite;
 }
@@ -50,6 +50,7 @@
   transition: var(--transition-smooth);
   justify-content: center;
   height: 100%;
+  z-index: 10000;
 }
 
 .logo-main {
@@ -57,6 +58,7 @@
   font-size: var(--font-size-2xl);
   font-weight: 700;
   color: var(--primary-green);
+  
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
@@ -65,6 +67,7 @@
   align-items: center;
   height: 100%;
   transition: var(--transition-smooth);
+  z-index: 10000;
 }
 
 .logo-subtitle {
@@ -272,6 +275,19 @@
   animation: navBubbleGlow 2.5s ease-in-out infinite alternate;
 }
 
+/* Disable bubble effects in mobile menu */
+.nav.mobile-open .nav-item::before,
+.nav.mobile-open .nav-item::after
+
+  {
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  animation: none !important;
+}
+
+
+
 @keyframes navBubblePulse {
   0% {
     transform: translate(-50%, -50%) scale(1);
@@ -327,10 +343,19 @@
   height: 30px;
   background: none;
   border: none;
-  cursor: pointer;
+
   padding: 0;
-  z-index: var(--z-modal);
+  z-index: 10000;
   transition: var(--transition-smooth);
+  position: relative;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
 }
 
 .hamburger-line {
@@ -348,13 +373,13 @@
 }
 
 .hamburger:hover .hamburger-line {
-  background: var(--secondary-green);
+  background: var(--primary-green);
   box-shadow: 0 0 8px rgba(36, 126, 12, 0.4);
 }
 
 .hamburger.active .hamburger-line:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
-  background: var(--accent-dark-green);
+  background: var(--primary-green);
 }
 
 .hamburger.active .hamburger-line:nth-child(2) {
@@ -364,47 +389,30 @@
 
 .hamburger.active .hamburger-line:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -6px);
-  background: var(--accent-dark-green);
+  background: var(--primary-green);
 }
 
-/* Enhanced Mobile Menu Overlay */
+
 .nav.mobile-open {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(50px) saturate(200%);
-  -webkit-backdrop-filter: blur(50px) saturate(200%);
-  z-index: var(--z-modal-backdrop);
+  background: rgba(255, 255, 255, 1); 
+
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.3);
 }
+
 
 /* Add massive blur to body when menu is open */
 body.menu-open {
-  backdrop-filter: blur(100px) saturate(300%);
-  -webkit-backdrop-filter: blur(100px) saturate(300%);
   overflow: hidden;
-}
-
-body.menu-open::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(100px) saturate(300%);
-  -webkit-backdrop-filter: blur(100px) saturate(300%);
-  z-index: var(--z-modal-backdrop);
-  pointer-events: none;
 }
 
 .mobile-open .nav-list {
@@ -425,17 +433,46 @@ body.menu-open::before {
   padding: var(--spacing-base) var(--spacing-xl);
   border-radius: var(--radius-lg);
   transition: var(--transition-smooth);
+  color: var(--text-primary) !important;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(36, 126, 12, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: block;
+  width: 100%;
+  max-width: 300px;
+}
+
+.mobile-open .nav-link:hover {
+  background: rgba(36, 126, 12, 0.1);
+  border-color: var(--primary-green);
+  color: var(--primary-green) !important;
+  transform: translateY(-2px);
+}
+
+.mobile-open .nav-link.active {
+  background: var(--primary-green);
+  color: var(--white) !important;
+  border-color: var(--primary-green);
 }
 
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  a.nav-link::before,
+  a.nav-link.active::after {
+    display: none !important;
+    content: none !important;
+  }
+  
   .header-content {
     padding: 0 var(--spacing-sm);
   }
 
   .hamburger {
-    display: flex;
+    display: flex !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    visibility: visible !important;
   }
 
   .nav {
@@ -476,6 +513,10 @@ body.menu-open::before {
   .hamburger {
     width: 32px;
     height: 32px;
+    display: flex !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    visibility: visible !important;
   }
   
   .hamburger-line {
@@ -506,6 +547,10 @@ body.menu-open::before {
   .hamburger {
     width: 28px;
     height: 28px;
+    display: flex !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    visibility: visible !important;
   }
 }
 
@@ -527,6 +572,13 @@ body.menu-open::before {
   .mobile-open .nav-list {
     gap: var(--spacing-base);
     padding: var(--spacing-2xl) var(--spacing-sm);
+  }
+  
+  .hamburger {
+    display: flex !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    visibility: visible !important;
   }
 }
 
@@ -553,6 +605,10 @@ body.menu-open::before {
   .hamburger {
     width: 24px;
     height: 24px;
+    display: flex !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    visibility: visible !important;
   }
   
   .hamburger-line {
@@ -635,20 +691,14 @@ body.menu-open::before {
   outline: none;
 }
 
-/* Skip link for keyboard navigation */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: var(--primary-green);
-  color: var(--white);
-  padding: 8px;
-  text-decoration: none;
-  border-radius: var(--radius-base);
-  z-index: var(--z-modal);
-  transition: top 0.3s;
-}
 
-.skip-link:focus {
-  top: 6px;
+/* Override GSAP inline styles on mobile devices */
+@media (max-width: 768px) {
+  .hamburger[style*="opacity: 0"],
+  .hamburger[style*="scale(0"],
+  .hamburger[style*="transform: scale(0"] {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    visibility: visible !important;
+  }
 }

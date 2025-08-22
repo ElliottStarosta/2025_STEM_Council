@@ -17,6 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
     gsap.set(".nav-list .nav-item", { opacity: 1, y: 0, scale: 1 }); // Start visible for desktop
   }
 
+  // Set hamburger menu initial state - ensure it's visible on mobile
+  if (window.innerWidth <= 768) {
+    gsap.set(".hamburger", { opacity: 1, scale: 1, rotation: 0 });
+  } else {
+    gsap.set(".hamburger", { opacity: 0, scale: 0, rotation: 0 });
+  }
+
   // Enhanced Header entrance animation - simplified to avoid conflicts
   tl.to(".header", {
     duration: 1.2,
@@ -42,18 +49,27 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power3.out",
       },
       "-=0.4"
-    )
-    .from(
-      ".hamburger",
-      {
-        duration: 0.6,
-        scale: 0,
-        opacity: 0,
-        rotation: 180,
-        ease: "back.out(2.5)",
-      },
-      "-=0.4"
     );
+
+  // Only animate hamburger on desktop (hide it)
+  if (window.innerWidth > 768) {
+    tl.to(".hamburger", {
+      duration: 0.6,
+      scale: 0,
+      opacity: 0,
+      rotation: 180,
+      ease: "back.out(2.5)",
+    }, "-=0.4");
+  } else {
+    // On mobile, ensure hamburger is visible
+    tl.to(".hamburger", {
+      duration: 0.6,
+      scale: 1,
+      opacity: 1,
+      rotation: 0,
+      ease: "back.out(2.5)",
+    }, "-=0.4");
+  }
 
   // Enhanced Desktop nav items animation - ensure they stay visible
   if (window.innerWidth > 768) {
@@ -402,11 +418,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Reset nav items for desktop - ensure they're visible
           gsap.set(".nav-list .nav-item", { opacity: 1, y: 0, scale: 1 });
+          // Hide hamburger on desktop
+          gsap.set(".hamburger", { opacity: 0, scale: 0 });
         },
       });
     } else if (window.innerWidth > 768) {
       // Ensure nav items are visible on desktop
       gsap.set(".nav-list .nav-item", { opacity: 1, y: 0, scale: 1 });
+      // Hide hamburger on desktop
+      gsap.set(".hamburger", { opacity: 0, scale: 0 });
+    } else {
+      // Show hamburger on mobile
+      gsap.set(".hamburger", { opacity: 1, scale: 1 });
     }
   });
 
@@ -421,4 +444,18 @@ document.addEventListener("DOMContentLoaded", function () {
       delay: 0.2,
     }
   );
+
+  // Function to check and set hamburger menu visibility based on screen size
+  function setHamburgerVisibility() {
+    if (window.innerWidth <= 768) {
+      gsap.set(".hamburger", { opacity: 1, scale: 1, rotation: 0 });
+    } else {
+      gsap.set(".hamburger", { opacity: 0, scale: 0, rotation: 0 });
+    }
+  }
+
+  // Call this function on page load and after a short delay to ensure proper state
+  setHamburgerVisibility();
+  setTimeout(setHamburgerVisibility, 100);
+  setTimeout(setHamburgerVisibility, 500);
 });
