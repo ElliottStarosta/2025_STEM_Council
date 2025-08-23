@@ -31,9 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
 
+    const scrollElement = document.scrollingElement || document.documentElement;
+
     // Use GSAP ScrollToPlugin for smooth scrolling
     if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
-      gsap.to(window, {
+      gsap.to(scrollElement, {
         duration: 1.2,
         scrollTo: {
           y: targetSection,
