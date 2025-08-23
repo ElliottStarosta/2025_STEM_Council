@@ -245,7 +245,7 @@ html {
   font-size: 16px;
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: auto !important;
+  /* scroll-behavior: auto !important; */
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: transparent;
@@ -401,7 +401,7 @@ a:focus {
   width: 40px;
   height: 40px;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 100000;
   transition: none;
 }
 
