@@ -2,6 +2,8 @@
 // This function can be used for any link with href="#section-id" across the entire site
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  
   // Small delay to ensure all scripts are loaded
   setTimeout(() => {
     // Register GSAP and ScrollToPlugin

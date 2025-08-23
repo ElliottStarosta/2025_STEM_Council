@@ -945,7 +945,6 @@ section {
   /* Improve scrolling on touch devices */
   html {
     -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
   }
 }
 
@@ -1160,12 +1159,6 @@ section {
   
   .particle {
     animation-duration: 6s !important;
-  }
-  
-  /* Optimize scroll performance */
-  html {
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
   }
   
   /* Reduce motion for users who prefer it */
